@@ -5,29 +5,34 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pet;
 
-class PetController extends Controller
+class PetWebController extends Controller
 {
     //create pets
-    public function create(Request $r)
+    public function create()
+    {
+        return view ('register');
+    }
+
+    public function store(Request $r)
     {
         try {
             $r->validate([
-                'name_user' => 'required|string',
-                'cell_phone'=> 'required|integer',
-                'pet_type' => 'required|string',
-                'pet_name' => 'required|string',
-                'microchip' => 'required|integer',
-                'age' => 'integer',
-                'weight' => 'integer',
-                'height' => 'integer',
-                'race' => 'required|string',
-                'illness' => 'required|string',
+                'name_user' => 'required|string|max:80',
+                'cell_phone'=> 'required|integer|min:15',
+                'pet_type'=> 'required|string|max:50',
+                'pet_name' => 'required|string|max:80',
+                'microchip' => 'required|integer|unique:pet|min:80',
+                'age' => 'integer|min:4',
+                'weight' => 'integer|min:4',
+                'height' => 'integer|min:4',
+                'race' => 'required|string|max:30',
+                'illness' => 'required|string|max:200',
             ]);
             $pet =  Pet::create([
                 'name_user' => $r->name_user ,
                 'cell_phone' => $r->cell_phone,
-                'pet_type' => $r->pet_type,
                 'pet_name' => $r->pet_name,
+                'pet_type' => $r->pet_type,
                 'microchip' => $r->microchip,
                 'age' => $r->age,
                 'weight' => $r->weight,
@@ -35,16 +40,19 @@ class PetController extends Controller
                 'race' => $r->race,
                 'illness' => $r->illness,
             ]);
-            return response()->json(['pet' => $pet]);
+            $pet ->save();
+            return $this->list();
         } catch (\Exception $e) {
-            return response()->json(['message'=> $e->getMessage()],400);
+            throw $e;
+            // unique:posts
         }
     }
 
     //show all pets
     public function list()
     {
-        return response()->json(['pets' => Pet::all()]);
+        $data['pets'] = Pet::all();
+        return view('home',$data);
     }
 
     //show a pet
@@ -69,10 +77,10 @@ class PetController extends Controller
     }
 
     //delete pet data
-    public function delete(Request $r)
+    public function delete($id,Request $r)
     {
-        $pet = Pet::find($r->id);
+        $pet = Pet::find($id);
         $pet->delete();
-        return response()->json(['message'=> 'pet data deleted successfully']);
+        return $this->list();
     }
 }

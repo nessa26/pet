@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name_user');
             $table->integer('cell_phone');
+            $table->string('pet_type');
             $table->string('pet_name');
             $table->integer('microchip')->unique();
             $table->integer('age');
