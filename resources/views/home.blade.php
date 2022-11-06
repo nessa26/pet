@@ -74,7 +74,6 @@
     <footer>
         <h4>MASCOTAS</h4>
         <div>
-
         </div>
     </footer>
 </body>
