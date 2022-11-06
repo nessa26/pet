@@ -1,64 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualizar</title>
-</head>
-<body>
-    <main>
-        <form action="{{Route('pet.put',$pet)}}" method="post">
+@extends ('layouts.core_template')
+@section ('content')
+<main>
+        <form action="{{Route('pet.put',$pet)}}" method="post" >
+        <h1 class="text-center mb-3 fw-bold">FORMULARIO</h1>
+        <h4 class="text-center mb-3 text-success fs-6 fw-lighter">Actualizar datos de la mascota</h4>
             @csrf
             @method('put')
-            <div>
-                <div>
-                    <label for="">Nombre usuario</label>
-                    <input type="text" name="user" id="user" value="{{$pet->name_user}}">
+                <div class="mb-2">
+                    <label for="" class="col-form-label">Nombre usuario</label>
+                    <input class="form-control" type="text" name="user" id="user" value="{{$pet->name_user}}">
                 </div>
-                <div>
-                    <label for="">Número celular</label>
-                    <input type="text" name="iphone" id="iphone" value="{{$pet->cell_phone}}">
+                <div class="mb-2">
+                    <label for="" class="col-form-label">Número celular</label>
+                    <input class="form-control" type="text" name="iphone" id="iphone" value="{{$pet->cell_phone}}">
                 </div>
-            </div>
-            <div>
-                <div>
-                    <label for="">Nombre mascota</label>
-                    <input type="text" name="pet" id="pet" value="{{$pet->pet_name}}">
+            
+            
+                <div class="mb-2">
+                    <label for="" class="col-form-label">Nombre mascota</label>
+                    <input class="form-control" type="text" name="pet" id="pet" value="{{$pet->pet_name}}">
                 </div>
-                <div>
-                    <label for="">Codigo mascota</label>
-                    <input type="text" name="microchip" id="microchip" value="{{$pet->microchip}}">
+                <div class="mb-2">
+                    <label for="" class="col-form-label">Codigo mascota</label>
+                    <input class="form-control" type="text" name="microchip" id="microchip" value="{{$pet->microchip}}">
                 </div> 
-            </div>
-            <div>
-                <div>
-                    <label for="">Edad</label>
-                    <input type="text" name="age" id="age" value="{{$pet->age}}">
+            
+            
+                <div class="mb-2">
+                    <label for="" class="col-form-label">Edad</label>
+                    <input class="form-control" type="text" name="age" id="age" value="{{$pet->age}}">
                 </div>
-                <div>
-                    <label for="">Peso</label>
-                    <input type="text" name="weight" id="weight" value="{{$pet->weight}}">
+                <div class="mb-2">
+                    <label for="" class="col-form-label">Peso</label>
+                    <input class="form-control" type="text" name="weight" id="weight" value="{{$pet->weight}}">
                 </div>
-                <div>
-                    <label for="">Estatura</label>
-                    <input type="text" name="height" id="height" value="{{$pet->height}}">
+                <div class="mb-2">
+                    <label for="" class="col-form-label">Estatura</label>
+                    <input class="form-control" type="text" name="height" id="height" value="{{$pet->height}}">
                 </div>
-            </div>
-            <div>
-                <div>
-                    <label for="">raza</label>
-                    <input type="text" name="race" id="race"  value="{{$pet->race}}">
+            
+            
+                <div class="mb-2">
+                    <label for="" class="col-form-label">raza</label>
+                    <input class="form-control" type="text" name="race" id="race"  value="{{$pet->race}}">
                 </div>
-                <div>
-                    <label for="">Enfermedad</label>
-                    <input type="text" name="illness" id="illness" value="{{$pet->illness}}">
+                <div class="mb-2">
+                    <label for="" class="col-form-label">Enfermedad</label>
+                    <input class="form-control" type="text" name="illness" id="illness" value="{{$pet->illness}}">
                 </div>
-            </div>
-            <div>
-                <button type= "submit" id="update">Guardar</button>
+            
+            <div class="mb-2 text-center">
+                <button class="btnbtn btn-success btn-lg disabled text-center" type= "submit" id="update">Guardar</button>
             </div>
         </form>
     </main>
-</body>
-</html>
+@endsection
