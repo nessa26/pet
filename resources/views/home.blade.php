@@ -51,7 +51,11 @@
                                 <td>{{$pet->race}}</td>
                                 <td>{{$pet->illness}}</td>
                                 <td>
-                                   Actualizar   
+                                    <form action="{{Route('pet.update',$pet)}}" method="get">
+                                        @csrf 
+                                        @method('update')
+                                        <button type="submit">Actualizar</button>
+                                    </form> 
                                 </td>
                                 <td>
                                     <form action="{{Route ('pet.delete',$pet)}}" method="post">

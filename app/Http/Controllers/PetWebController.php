@@ -17,16 +17,16 @@ class PetWebController extends Controller
     {
         try {
             $r->validate([
-                'name_user' => 'required|string|max:80',
-                'cell_phone'=> 'required|integer|min:15',
-                'pet_type'=> 'required|string|max:50',
-                'pet_name' => 'required|string|max:80',
-                'microchip' => 'required|integer|unique:pet|min:80',
-                'age' => 'integer|min:4',
-                'weight' => 'integer|min:4',
-                'height' => 'integer|min:4',
-                'race' => 'required|string|max:30',
-                'illness' => 'required|string|max:200',
+                'name_user' => 'required|string',
+                'cell_phone'=> 'required|integer',
+                'pet_type'=> 'required|string',
+                'pet_name' => 'required|string',
+                'microchip' => 'required|integer|unique:pet',
+                'age' => 'integer',
+                'weight' => 'integer',
+                'height' => 'integer',
+                'race' => 'required|string',
+                'illness' => 'required|string',
             ]);
             $pet =  Pet::create([
                 'name_user' => $r->name_user ,
@@ -62,17 +62,25 @@ class PetWebController extends Controller
         return response()->json(['pet' => $pet]);
     }
 
-    //update pet data
+    //search data to update of pet
     public function update($id, Request $r)
+    {
+        $pet = Pet::find($id);
+        return view('update',["pet" => $pet]);
+    }
+
+    //update pet data
+    public function put($id, Request $r)
     {
         try {
             $pet = Pet::find($id);
             $pet->update($r->all());
             $pet->save();
-            return response()->json(['message' => 'the pet data has been successfully updated']);
+            return $this->list();
         } catch (\Exception $e) {
-            return response()->json(['message' => 'There was an error updating pet data']);
+            // return response()->json(['message' => 'There was an error updating pet data']);
             // return response()->json(['message'=> $e->getMessage()]);
+            throw $e;
         }
     }
 
