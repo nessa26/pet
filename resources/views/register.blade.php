@@ -46,7 +46,7 @@
             <input type="text" class="form-control" name="illness" id="illness">
         </div>
         <div class="mb-2 text-center">
-             <button class="btn btn-primary btn-lg disabled text-center" type= "submit">Guardar</button>
+                <button class="btn btn-primary btn-lg text-center" type= "submit">Guardar</button>
         </div>
     </form>
     @if($errors->any())

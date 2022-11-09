@@ -48,7 +48,7 @@
                             </form> 
                         </td>
                         <td>
-                            <form action="{{Route ('pet.delete',$pet)}}" method="post">
+                            <form action="{{Route('pet.delete',$pet)}}" method="post">
                                 @csrf
                                 @method('delete')
                                 <button class="btn btn-outline-danger" type="submit">Eliminar</button>
