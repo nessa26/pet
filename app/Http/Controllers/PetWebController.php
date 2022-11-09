@@ -78,8 +78,6 @@ class PetWebController extends Controller
             $pet->save();
             return $this->list();
         } catch (\Exception $e) {
-            // return response()->json(['message' => 'There was an error updating pet data']);
-            // return response()->json(['message'=> $e->getMessage()]);
             throw $e;
         }
     }

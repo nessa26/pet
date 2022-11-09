@@ -23,6 +23,3 @@ Route::post('/pet/store', [PetWebController::class,'store'])->name('pet.store');
 Route::delete('/pet/{id}/delete', [PetWebController::class,'delete'])->name('pet.delete');
 Route::get('pet/{id}/update',[PetWebController::class,'update'])->name('pet.update');
 Route::put('pet/{id}/put',[PetWebController::class,'put'])->name('pet.put');
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
