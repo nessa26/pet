@@ -14,14 +14,15 @@
             <thead class="table-dark">
                 <tr>
                     <th>Id</th>
-                    <th>Número</th>
                     <th>Nombre Usuario</th>
-                    <th>Codigo mascosta</th>
+                    <th>Número</th>
+                    <th>Tipo de mascota</th>
                     <th>Nombre mascota</th>
-                    <th>Peso</th>
+                    <th>Codigo mascosta</th>
                     <th>Edad</th>
-                    <th>Raza</th>
+                    <th>Peso</th>
                     <th>Estatura</th>
+                    <th>Raza</th>
                     <th>Enfermedad</th>
                     <th>Actualizar</th>
                     <th>Eliminar</th>
@@ -33,6 +34,7 @@
                         <td >{{$pet->id}}</td>
                         <td>{{$pet->name_user}}</td>
                         <td>{{$pet->cell_phone}}</td>
+                        <td>{{$pet->pet_type}}</td>
                         <td>{{$pet->pet_name}}</td>
                         <td>{{$pet->microchip}}</td>
                         <td>{{$pet->age}}</td>

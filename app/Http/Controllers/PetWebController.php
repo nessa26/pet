@@ -31,8 +31,8 @@ class PetWebController extends Controller
             $pet =  Pet::create([
                 'name_user' => $r->name_user ,
                 'cell_phone' => $r->cell_phone,
-                'pet_name' => $r->pet_name,
                 'pet_type' => $r->pet_type,
+                'pet_name' => $r->pet_name,
                 'microchip' => $r->microchip,
                 'age' => $r->age,
                 'weight' => $r->weight,
@@ -53,13 +53,6 @@ class PetWebController extends Controller
     {
         $data['pets'] = Pet::all();
         return view('home',$data);
-    }
-
-    //show a pet
-    public function show($id, Request $r)
-    {
-        $pet = Pet::find($id);
-        return response()->json(['pet' => $pet]);
     }
 
     //search data to update of pet
